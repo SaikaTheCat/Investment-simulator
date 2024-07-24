@@ -40,7 +40,7 @@ def simulate_investment(symbol, investment_amount, start_date, end_date):
 def get_symbols():
     symbols = simpledialog.askstring("Input", "Ingrese los símbolos de las acciones separados por comas:")
     if symbols:
-        return symbols.split(',')
+        return [symbol.strip() for symbol in symbols.split(',')]
     return None
 
 # Función para realizar la simulación y actualizar el label
