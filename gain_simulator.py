@@ -98,16 +98,19 @@ def run_simulation():
     total_invested_combined = combined_investment_df["Total Invested"].iloc[-1]
     total_value_combined = combined_investment_df["Total Value"].iloc[-1]
 
+    percentage_return = ((total_value_combined - total_invested_combined) / total_invested_combined) * 100
+
     # Formatear los números con comas como separadores de miles
     total_invested_formatted = f"{total_invested_combined:,.2f}"
     total_value_formatted = f"{total_value_combined:,.2f}"
+    percentage_return_formatted = f"{percentage_return:.2f}%"
 
     plt.figure(figsize=(12, 8))
     plt.plot(combined_investment_df["Date"], combined_investment_df["Total Value"], label=f"Valor Total de la Inversión Combinada: ${total_value_formatted}")
     plt.plot(combined_investment_df["Date"], combined_investment_df["Total Invested"], label=f"Total Invertido Combinado: ${total_invested_formatted}")
     plt.xlabel("Fecha")
     plt.ylabel("Valor en USD")
-    plt.title("Simulación de Inversión Combinada")
+    plt.title(f"Simulación de Inversión Combinada\nRetorno: {percentage_return_formatted}")
     plt.legend()
     plt.grid(True)
     plt.show()
